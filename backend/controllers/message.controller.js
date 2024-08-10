@@ -33,7 +33,7 @@ export const sendMessage = async (req,res) => {
 
         // SOCKET IO WILL GO HERE
 
-        res.status(201).json(newMessage)
+        return res.status(201).json(newMessage)
     } catch(error){
         console.log("Error in sendMessage controller :",error.message)
         res.status(500).json({error:"Internal server error"})

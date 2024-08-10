@@ -1,18 +1,25 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { TiMessages } from "react-icons/ti"
 import Messages from './Messages'
 import MessageInput from './MessageInput'
+import useConversation from '../../zustand/useConversation'
 
 const MessageContainer = () => {
+
+  const { selectedConversation, setSelectedConversation } = useConversation()
   
-  const noChatSelected = false;
-  
+  useEffect(() => {
+    // when we logout then selectedConversation should be reset to null
+    // cleanup function when unmounts
+    return () => setSelectedConversation(null)
+  }, [setSelectedConversation])
   return (
     <div className="md:min-w-[550px] relative flex flex-col">
-      {noChatSelected ? <NoChatSelected /> : (
+      {!selectedConversation ? <NoChatSelected /> : (
         <>
-          <div className='bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800  relative mx-2 rounded-lg top-0 right-0 px-4 py-2 mb-2'>
-            <span className="label-text text-gray-200 p-2 text-lg">To : <span className="text-gray-200 font-semibold">Humayun Ahmad</span></span>
+          <div className='text-white bg-[rgba(0,0,0,0.2)] font-medium  relative top-0 right-0 px-4 py-2 mb-2'>
+            <span className="p-2 text-lg">To : <span className="text-md">{selectedConversation.fullName}</span></span>
           </div>
           <Messages />
           <MessageInput />
