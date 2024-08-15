@@ -8,7 +8,9 @@ const useConversation = create((set)=>({
     selectedConversation: null,
     setSelectedConversation: (selectedConversation) => set({selectedConversation}),
     messages: [],
-    setMessages: (messages) => set({messages})
+    setMessages: (messages) => set({messages}),
+    openMessage: false,
+    setOpenMessage: (openMessage) => set({openMessage})
 }))
 export default useConversation;
 // useConversation, manages the state of a conversation in your application. 

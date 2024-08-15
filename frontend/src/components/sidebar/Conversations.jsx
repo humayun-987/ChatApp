@@ -6,7 +6,7 @@ const Conversations = () => {
   const {loading, conversations} = useGetConversations();
   // console.log("CONVERSATIONS :",conversations)
   return (
-    <div className='py-2 flex flex-col h-[calc(90vh-172px)]] overflow-y-auto '>
+    <div className='py-2 flex flex-col h-[calc(80vh-172px)] md:h-[calc(90vh-172px)] overflow-y-auto '>
       {loading ? <span className='loading loading-spinner'></span> : null}
       {conversations.map((conversation,idx)=>(
          <Conversation 

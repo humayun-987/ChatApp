@@ -5,10 +5,10 @@ import Messages from './Messages'
 import MessageInput from './MessageInput'
 import useConversation from '../../zustand/useConversation'
 import { useAuthContext } from '../../context/AuthContext'
-
+import { FaArrowLeft } from 'react-icons/fa';
 const MessageContainer = () => {
 
-  const { selectedConversation, setSelectedConversation } = useConversation()
+  const { selectedConversation, setSelectedConversation, openMessage, setOpenMessage } = useConversation()
   
   useEffect(() => {
     // when we logout then selectedConversation should be reset to null
@@ -16,11 +16,12 @@ const MessageContainer = () => {
     return () => setSelectedConversation(null)
   }, [setSelectedConversation])
   return (
-    <div className="md:min-w-[550px] relative flex flex-col">
+    <div className={`${!openMessage ? 'hidden' : 'flex flex-col'} md:flex md:flex-col w-[350px] md:w-[400px] lg:w-[550px] relative`}>
       {!selectedConversation ? <NoChatSelected /> : (
         <>
-          <div className='text-white bg-[rgba(0,0,0,0.2)] font-medium  relative top-0 right-0 px-4 py-2 mb-2'>
+          <div className='text-white bg-[rgba(0,0,0,0.2)] font-medium flex justify-between items-center relative top-0 right-0 px-4 py-2 mb-2'>
             <span className="p-2 text-lg">To : <span className="text-md">{selectedConversation.fullName}</span></span>
+            <button onClick={() => setOpenMessage(false)}><FaArrowLeft/></button>
           </div>
           <Messages />
           <MessageInput />
