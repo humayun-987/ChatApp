@@ -19,9 +19,11 @@ const LogoutBtn = () => {
             
             localStorage.removeItem('chat-user');
             setAuthUser(null);
+            toast.success("Logout successful")
             // console.log(data);
         } catch(error) {
             console.error(error)
+            toast.error("Logout failed")
         } finally{
             setLoading(false)
         }

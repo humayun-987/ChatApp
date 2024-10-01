@@ -58,9 +58,10 @@ const Signup = () => {
             localStorage.setItem("chat-user", JSON.stringify(data))
             // update our context variables
             setAuthUser(data);
-            console.log(data);
+            toast.success("Sign up succesfull")
         } catch (error) {
             console.error(error.message)
+            toast.error("Sign up failed")
         } finally {
             setLoading(false)
         }

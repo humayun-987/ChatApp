@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import toast from 'react-hot-toast'
-import { set } from 'mongoose'
-import { useAuthContext } from '../../context/AuthContext'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { set } from 'mongoose';
+import { useAuthContext } from '../../context/AuthContext';
 const Login = () => {
     const [inputs, setInputs] = useState({
         username: '',
@@ -48,10 +48,12 @@ const Login = () => {
             }
 
             localStorage.setItem('chat-user', JSON.stringify(data));
-            setAuthUser(data)
+            setAuthUser(data);
+            toast.success('Login successful!');
 
         } catch (error) {
             console.error(error)
+            toast.error('Login not successful!');
         } finally {
             setLoading(false)
         }
