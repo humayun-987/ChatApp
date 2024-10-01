@@ -12,7 +12,7 @@ export default defineConfig({
     // It will redirect all requests starting from "/api" to this 5000 port
     proxy:{
       "/api":{
-        target: "https://chatapp-prod-n4cd.onrender.com"
+        target: "http://localhost:5000"
       }
     }
   }
